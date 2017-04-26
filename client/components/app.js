@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackList from 'TrackList.js'
+import TrackList from './TrackList.js'
 
 class App extends React.Component {
   constructor(props){
@@ -10,6 +10,7 @@ class App extends React.Component {
   }
 
   render () {
+
     console.log('TrackList ', this.state.trackList);
 
     // return (
@@ -17,6 +18,7 @@ class App extends React.Component {
     //     <TrackList trackList={this.state.trackList}/>
     //   </div>
     // )
+
   }
 
 };

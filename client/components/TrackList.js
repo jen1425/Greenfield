@@ -11,7 +11,7 @@ class TrackList extends React.Component {
       <div className='track-list'>
         Track List component.
       </div>
-    )
+    );
   }
 }
 

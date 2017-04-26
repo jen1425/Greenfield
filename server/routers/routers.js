@@ -1,7 +1,7 @@
 var router = require('express').Router();
-var controller = require('../controllers');
+var controller = require('../controllers/controllers');
 
-router.get('/', controller.tracks.get);
+router.get('/tracks', controller.tracks.get);
 
 router.get('', controller.tracks.get);
 

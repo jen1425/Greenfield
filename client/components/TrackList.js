@@ -1,4 +1,5 @@
 import React from 'react';
+import TrackListItem from './TrackListItem.js';
 
 class TrackList extends React.Component {
   constructor(props){
@@ -10,6 +11,7 @@ class TrackList extends React.Component {
     return (
       <div className='track-list'>
         Track List component.
+        {this.props.trackList.map(item => (<TrackListItem track={item} />))}
       </div>
     );
   }

@@ -7,7 +7,7 @@ var partials = require('express-partials');
 var path = require('path');
 
 var app = express();
-app.set('port', 9000);
+app.set('port', process.env.PORT || 9000);
 
 app.use(cors());
 app.use(parser.json());

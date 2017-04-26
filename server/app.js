@@ -3,7 +3,7 @@ var express = require('express');
 var parser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var partials = require('express-partials');
-// var router = require('./routers/router');
+var router = require('./routers/routers');
 var path = require('path');
 
 var app = express();
@@ -17,7 +17,7 @@ app.use(partials());
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-// app.use(router);
+app.use(router);
 
 app.get('*', function(request, response){
   response.sendFile(path.join(__dirname, '../public/index.html'));

@@ -28,7 +28,7 @@ module.exports = {
           var trackURL = JSONbod[i]['permalink_url'];
           var options = { url: 'http://soundcloud.com/oembed', 
             method: 'GET', 
-            qs: {'url': trackURL, 'format': 'json'}
+            qs: {'url': trackURL, 'format': 'json', 'maxheight': '166', 'maxwidth': '600'}
           };
           request(options, function(error, response, body){
 

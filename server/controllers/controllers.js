@@ -10,10 +10,11 @@ module.exports = {
           .append('Access-Control-Allow-Origin', '*')
           .send('Failed with err ' + err);
         } else {
-          console.log('tracks that the controller will send back '+JSON.stringify(tracks));
+          //console.log('tracks that the controller will send back '+JSON.stringify(tracks));
+          //console.log(tracks);
           res.status(200)
           .append('Access-Control-Allow-Origin', '*')
-          .send(JSON.stringify(tracks));
+          .send(tracks);
         }
       });
     }

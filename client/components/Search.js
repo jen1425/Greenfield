@@ -16,7 +16,7 @@ class Search extends React.Component {
 
   submitHandler() {
     console.log('Submithandler will send ', this.state.searchTerm);
-    this.props.submitHandler(this.state.searchTerm); 
+    this.props.submitHandler(this.state.searchTerm);
   }
 
   checkBoxhandler(e) {
@@ -27,41 +27,51 @@ class Search extends React.Component {
     //console.log('ClickHandler changes state to reflect ', this.state.searchTerm);
   }
 
-  render() { 
+  render() {
 
-    return (<div>
-      {/*<input type="text" onChange={this.textHandler.bind(this)}/>
-      <input type="button" value="Search for tracks" onClick={this.submitHandler.bind(this)} />*/}
+    return (<div className="search-bar">
+
       <form>
-        <input type="checkbox" 
-        name="genre" 
-        value="Classical" 
-        id="Classical"
-        onChange={this.checkBoxhandler.bind(this)} />
-        <label for="Classical"> Classical </label>
+        <div className="checkbox-inline">
+          <label for="Classical">
+            <input type="checkbox"
+            name="genre"
+            value="Classical"
+            id="Classical"
+            onChange={this.checkBoxhandler.bind(this)} />
+            Classical
+          </label>
+        </div>
 
-        <input type="checkbox" 
-        name="genre" 
-        value="Country" 
-        id="Country"
-        onChange={this.checkBoxhandler.bind(this)} />
-        <label for="Country"> Country </label>
+        <div className="checkbox-inline">
+          <label for="Country">
+            <input type="checkbox"
+            name="genre"
+            value="Country"
+            id="Country"
+            onChange={this.checkBoxhandler.bind(this)} />
+            Country
+         </label>
+        </div>
 
-        <input type="checkbox" 
-        name="genre" 
-        value="Pop" 
-        id="Pop"
-        onChange={this.checkBoxhandler.bind(this)} />
-        <label for="Pop"> Pop </label>
-        </form>
+        <div className="checkbox-inline">
+          <label for="Pop">
+            <input type="checkbox"
+            name="genre"
+            value="Pop"
+            id="Pop"
+            onChange={this.checkBoxhandler.bind(this)} />
+            Pop
+          </label>
+        </div>
+      </form>
 
-        <input type="submit" 
-        value="Search" 
-        onClick={this.submitHandler.bind(this)} />
-
+      <input type="submit"
+      value="Search"
+      onClick={this.submitHandler.bind(this)} />
     </div>);
 
   }
-} 
+}
 
 export default Search;

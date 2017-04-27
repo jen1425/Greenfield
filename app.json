@@ -4,6 +4,12 @@
   "scripts": {
   },
   "env": {
+    "SC_CLIENT_ID": {
+      "required": true
+    },
+    "SC_CLIENT_SECRET": {
+      "required":true
+    }
   },
   "formation": {
   },

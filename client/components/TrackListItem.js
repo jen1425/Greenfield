@@ -7,7 +7,6 @@ class TrackListItem extends React.Component {
     this.state = {
       iframe: ''
     };
-    this.getIframe
   }
 
   componentDidMount() {
@@ -25,13 +24,14 @@ class TrackListItem extends React.Component {
         }
     }).then( response => {
      this.setState({iframe: response.data});
+
     }).catch( error => {console.log(error)})
   }
+
   render () {
 
-    this.props.track.permalink_url
     return (
-      <div>{this.props.track.permalink_url}</div>
+      <div dangerouslySetInnerHTML={{__html: this.state.iframe.html}}></div>
     )
   }
 }

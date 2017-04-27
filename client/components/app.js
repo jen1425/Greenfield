@@ -11,10 +11,20 @@ class App extends React.Component {
   }
 
   render () {
-    console.log('TrackList ', this.state.trackList);
 
     var searchTracks = function(searchTerm) {
-      console.log(searchTerm);
+      searchTerm = searchTerm.slice(2);
+      console.log('searchTerm received by App component ', searchTerm);
+      var me = this;
+      $.get('/tracks?genres=' + searchTerm, 
+      function(data) {
+        console.log(data);
+        me.setState(
+          {
+            trackList: data
+          }
+        );
+      });
     };
 
     return (

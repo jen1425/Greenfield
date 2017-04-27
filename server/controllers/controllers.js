@@ -1,10 +1,12 @@
 var model = require('../models/models');
+var url = require('url');
 
 module.exports = {
   tracks: {
     get: function(req, res) {
-      console.log('got to the controller for tracks');
-      model.tracks.get('', function(err, tracks) {
+      var queryParams = url.parse(req.url, true).query;
+      console.log('got to the controller for tracks with query params ', queryParams.genres);
+      model.tracks.get(queryParams.genres, function(err, tracks) {
         if (err) {
           res.status(404)
           .append('Access-Control-Allow-Origin', '*')

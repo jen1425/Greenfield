@@ -12,6 +12,7 @@ module.exports = {
         } else {
           //console.log('tracks that the controller will send back '+JSON.stringify(tracks));
           //console.log(tracks);
+          //console.log('Data the controller will send back ', tracks);
           res.status(200)
           .append('Access-Control-Allow-Origin', '*')
           .send(tracks);

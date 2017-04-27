@@ -59,7 +59,7 @@ module.exports = {
 
         console.log('My length is ', tracks['data'].length);
         var returnArray = [];
-        for (var i = 0; i <= 15; i++) {
+        for (var i = 0; i < Math.min(15, tracks['data'].length); i++) {
           returnArray[i] = tracks['data'][i];
         }
         console.log('Return array length is ', returnArray.length);

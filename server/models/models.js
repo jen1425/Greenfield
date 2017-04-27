@@ -50,8 +50,13 @@ module.exports = {
       //   //return results array
       // }); 
 
-      axios.get('http://api.soundcloud.com/tracks/?client_id=' + key)
+      axios.get('http://api.soundcloud.com/tracks/?client_id=' + key, {
+        params: {
+          genres: searchTerms
+        }
+      })
       .then(function(tracks){
+
         console.log('My length is ', tracks['data'].length);
         var returnArray = [];
         for (var i = 0; i <= 15; i++) {

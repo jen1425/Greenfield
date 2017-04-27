@@ -22103,6 +22103,10 @@ var _react = __webpack_require__(50);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _axios = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"axios\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22117,16 +22121,47 @@ var TrackListItem = function (_React$Component) {
   function TrackListItem(props) {
     _classCallCheck(this, TrackListItem);
 
-    return _possibleConstructorReturn(this, (TrackListItem.__proto__ || Object.getPrototypeOf(TrackListItem)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (TrackListItem.__proto__ || Object.getPrototypeOf(TrackListItem)).call(this, props));
+
+    _this.state = {
+      iframe: ''
+    };
+    _this.getIframe;
+    return _this;
   }
 
   _createClass(TrackListItem, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.getIframe();
+    }
+  }, {
+    key: 'getIframe',
+    value: function getIframe() {
+      var _this2 = this;
+
+      _axios2.default.get('http://soundcloud.com/oembed', {
+        params: {
+          url: this.props.track.permalink_url,
+          format: 'json',
+          maxheight: '166',
+          maxwidth: '600'
+        }
+      }).then(function (response) {
+        _this2.setState({ iframe: response.data });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
+
+      this.props.track.permalink_url;
       return _react2.default.createElement(
         'div',
         null,
-        this.props.track
+        this.props.track.permalink_url
       );
     }
   }]);

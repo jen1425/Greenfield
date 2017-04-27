@@ -22,7 +22,7 @@ class Search extends React.Component {
 
     return (<div>
       <input type="text" onChange={this.textHandler.bind(this)}/>
-      <input type="button" value="Search for tracks" onClick={this.clickHandler.bind(this)} />
+      <input type="button" value="Search for tracks" onClick={this.submitHandler.bind(this)} />
     </div>);
 
   }

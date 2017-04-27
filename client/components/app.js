@@ -29,8 +29,14 @@ class App extends React.Component {
 
     return (
       <div>
-        <TrackList trackList={this.state.trackList}/>
-        <Search submitHandler={searchTracks.bind(this)} />
+        <div className="row">
+          <div className="col-md-8">
+            <TrackList trackList={this.state.trackList}/>
+          </div>
+          <div className="col-md-4">
+            <Search submitHandler={searchTracks.bind(this)} />
+          </div>
+        </div>
        </div>
     );
   }

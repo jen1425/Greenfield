@@ -1,5 +1,5 @@
 var request = require('request');
-var key = require('../APIkey.js').key;
+var key = process.env.SC_CLIENT_ID;
 var axios = require('axios');
 
 module.exports = {

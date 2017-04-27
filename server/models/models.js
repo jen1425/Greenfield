@@ -52,7 +52,13 @@ module.exports = {
 
       axios.get('http://api.soundcloud.com/tracks/?client_id=' + key)
       .then(function(tracks){
-        callback(null, tracks['data']);
+        console.log('My length is ', tracks['data'].length);
+        var returnArray = [];
+        for (var i = 0; i <= 15; i++) {
+          returnArray[i] = tracks['data'][i];
+        }
+        console.log('Return array length is ', returnArray.length);
+        callback(null, returnArray);
       })
       .catch(function(error){
         callback(error, null);

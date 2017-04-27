@@ -32,26 +32,38 @@ class Search extends React.Component {
     return (<div className="search-bar">
 
       <form>
-        <input type="checkbox"
-        name="genre"
-        value="Classical"
-        id="Classical"
-        onChange={this.checkBoxhandler.bind(this)} />
-        <label for="Classical"> Classical </label>
+        <div className="checkbox-inline">
+          <label for="Classical">
+            <input type="checkbox"
+            name="genre"
+            value="Classical"
+            id="Classical"
+            onChange={this.checkBoxhandler.bind(this)} />
+            Classical
+          </label>
+        </div>
 
-        <input type="checkbox"
-        name="genre"
-        value="Country"
-        id="Country"
-        onChange={this.checkBoxhandler.bind(this)} />
-        <label for="Country"> Country </label>
+        <div className="checkbox-inline">
+          <label for="Country">
+            <input type="checkbox"
+            name="genre"
+            value="Country"
+            id="Country"
+            onChange={this.checkBoxhandler.bind(this)} />
+            Country
+         </label>
+        </div>
 
-        <input type="checkbox"
-        name="genre"
-        value="Pop"
-        id="Pop"
-        onChange={this.checkBoxhandler.bind(this)} />
-        <label for="Pop"> Pop </label>
+        <div className="checkbox-inline">
+          <label for="Pop">
+            <input type="checkbox"
+            name="genre"
+            value="Pop"
+            id="Pop"
+            onChange={this.checkBoxhandler.bind(this)} />
+            Pop
+          </label>
+        </div>
       </form>
 
       <input type="submit"

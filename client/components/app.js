@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackList from './TrackList.js';
+import Controls from './Controls.js';
 import Search from './Search.js';
 
 class App extends React.Component {
@@ -34,7 +35,7 @@ class App extends React.Component {
             <TrackList trackList={this.state.trackList}/>
           </div>
           <div className="col-md-4">
-            <Search submitHandler={searchTracks.bind(this)} />
+            <Controls submitHandler={searchTracks.bind(this)} />
           </div>
         </div>
        </div>

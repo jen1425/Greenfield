@@ -55,7 +55,7 @@ module.exports = {
           genres: searchTerms
         }
       })
-      .then(function(tracks){
+      .then(function(tracks) {
 
         console.log('My length is ', tracks['data'].length);
         var returnArray = [];
@@ -65,7 +65,7 @@ module.exports = {
         console.log('Return array length is ', returnArray.length);
         callback(null, returnArray);
       })
-      .catch(function(error){
+      .catch(function(error) {
         callback(error, null);
       });
 

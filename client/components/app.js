@@ -2,6 +2,7 @@ import React from 'react';
 import TrackList from './TrackList.js';
 import Controls from './Controls.js';
 import Search from './Search.js';
+import Nav from './Nav.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <Nav />
         <div className="row">
           <div className="col-md-8">
             <TrackList trackList={this.state.trackList}/>

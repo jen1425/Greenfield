@@ -21,6 +21,28 @@ module.exports = {
         }
       });
     }
+  },
+
+  filter: {
+    get: function(req, res) {
+      console.log('got to filter controller');
+      //parse the query string and send to the model 
+      //wait for response from model to send to the client
+      //for now, sending in empty query string 
+      model.filter.get(function(error, data){
+        if (error) {
+          console.log('controller got error from DB', error);
+          res.status(404)
+          .append('Access-Control-Allow-Origin', '*')
+          .send(error); 
+        } else {
+          res.status(200)
+          .append('Access-Control-Allow-Origin', '*')
+          .send(data);
+        }
+      });  
+    }
+      
   }
 };
 

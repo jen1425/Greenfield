@@ -1,8 +1,8 @@
 var request = require('request');
-
 var key = process.env.SC_CLIENT_ID;
-// var key = 'grsudBMFGo32ykc7WfYYy2TXW7md5Hy7';
+var secret = process.env.SC_CLIENT_SECRET;
 var axios = require('axios');
+var request = require('request');
 
 module.exports = {
 
@@ -72,6 +72,35 @@ module.exports = {
         callback(error, null);
       });
 
+    }
+  },
+
+  filter: {
+    get: function(callback) {
+      console.log('got to model for filter');
+      var userOptions = {
+        url: 'https://api.soundcloud.com/oauth2/token',
+        method: 'POST',
+        qs: {grant_type: 'password',
+          client_id: key,
+          client_secret: secret,
+          username: 'aarondxavier@gmail.com',
+          password: 'gvy-CP2-L8t-Vub',
+          scope: 'non-expiring'
+        }
+      };
+
+      request(userOptions, function(error, res, body){
+        if (error) {
+          console.log('DB got an error from SC ', error);
+          callback(error, null);
+        } else {
+          var token = JSON.parse(body).access_token;
+          console.log(token);
+        }
+      });
+
+      
     }
   }
 

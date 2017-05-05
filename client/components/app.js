@@ -44,7 +44,7 @@ class App extends React.Component {
           console.log(data);
           me.setState(
             {
-              trackList: data
+              trackList: JSON.parse(data)
             }
           );
         });

@@ -1,6 +1,8 @@
 var request = require('request');
 var key = process.env.SC_CLIENT_ID;
 var secret = process.env.SC_CLIENT_SECRET;
+var username = process.env.USERNAME;
+var password = process.env.PASSWORD;
 var axios = require('axios');
 var request = require('request');
 
@@ -84,8 +86,8 @@ module.exports = {
         qs: {grant_type: 'password',
           client_id: key,
           client_secret: secret,
-          username: 'aarondxavier@gmail.com',
-          password: 'gvy-CP2-L8t-Vub',
+          username: username,
+          password: password,
           scope: 'non-expiring'
         }
       };

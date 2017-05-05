@@ -1,5 +1,7 @@
 var request = require('request');
+
 var key = process.env.SC_CLIENT_ID;
+// var key = 'grsudBMFGo32ykc7WfYYy2TXW7md5Hy7';
 var axios = require('axios');
 
 module.exports = {
@@ -66,6 +68,7 @@ module.exports = {
         callback(null, returnArray);
       })
       .catch(function(error) {
+        console.log('Model error ', error);
         callback(error, null);
       });
 

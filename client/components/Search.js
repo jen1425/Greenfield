@@ -4,35 +4,37 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      duration: 0,
-      genres: '',
+      duration: '',
+      genre: '',
       username: ''
     };
   }
 
   submitHandler() {
-    console.log('Submithandler will send --> ', this.state.duration, this.state.genres, this.state.username);
-    this.props.submitHandler(this.state.duration, this.state.genres, this.state.username);
+    console.log('Submithandler will send --> ', this.state.duration, this.state.genre, this.state.username);
+    this.props.submitHandler(this.state.duration, this.state.genre, this.state.username);
   }
 
   checkBoxhandler(e) {
-    if (this.state.genres === '') {
+    if (this.state.genre === '') {
       this.setState({
-        genres: e.target.value
+        genre: e.target.value
       });
     } else {
       this.setState({
-        genres: this.state.genres + ',' + e.target.value
+        genre: this.state.genre + ',' + e.target.value
       });
     }
   }
 
   durationHandler(e) {
     var lengthInMinutes = e.target.value;
-    var lengthInMs = Number.parseFloat(lengthInMinutes) * 60000;
-    this.setState({
-      duration: lengthInMs
-    });
+    if (lengthInMinutes !== '') {
+      var lengthInMs = Number.parseFloat(lengthInMinutes) * 60000;
+      this.setState({
+        duration: lengthInMs
+      });
+    }
   }
 
   usernameHandler(e) {
@@ -84,7 +86,7 @@ class Search extends React.Component {
 
           <div className="filter-duration">
             <label for="Duration">
-            Minimum Track Length
+            Minimum Track Length (Minutes)
               <input type="text"
               name="duration"
               onChange={this.durationHandler.bind(this)} />

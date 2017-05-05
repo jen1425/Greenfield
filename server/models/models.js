@@ -100,7 +100,7 @@ module.exports = {
           var feedOptions = {
             url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
             method: 'GET',
-            qs: {oauth_token: token, limit: 500}
+            qs: {oauth_token: token, limit: 500, order: '-created_at'}
           };
 
           request(feedOptions, function(error, res, body) {
@@ -111,12 +111,11 @@ module.exports = {
               console.log('got collection back of length ', JSON.parse(body).collection.length);
               var returnCollection = [];
               var collection = JSON.parse(body).collection;
-              console.log('6th item in collection is ', collection[5].origin.duration);
+              console.log(collection[0]);
+              
               for (var i = 0; i < collection.length; i++) {
                 if(!collection[i].origin) continue;
-                // if(!(collection[i].origin.user.username) || !(collection[i].origin.genre) || !(collection[i].origin.duration)) continue;
                 var result = eval(queryString);
-                console.log('eval value for item ' + i + ' is ' + result);
                 if (result) {
                   returnCollection.push(collection[i]);
                 }

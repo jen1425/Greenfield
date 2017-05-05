@@ -14,19 +14,41 @@ class App extends React.Component {
 
   render () {
 
-    var searchTracks = function(searchTerm) {
-      searchTerm = searchTerm.slice(2);
-      console.log('searchTerm received by App component ', searchTerm);
+    var searchTracks = function(duration, genre, username) {
+      var searchTerm = '/filter?';
+      if (duration !== '') {
+        searchTerm += 'duration=' + duration;
+      }
+
+      if (genre !== '') {
+        if (searchTerm !== '/filter?') {
+          searchTerm += '&genre=' + genre;
+        } else {
+          searchTerm += 'genre=' + genre;
+        }
+      }
+
+      if (username !== '') {
+        if (searchTerm !== '/filter?') {
+          searchTerm += '&username=' + username;
+        } else {
+          searchTerm += 'username=' + username;
+        }
+      }
+
+      console.log('searchTerm sent by App component --> ', searchTerm);
       var me = this;
-      $.get('/tracks?genres=' + searchTerm, 
-      function(data) {
-        console.log(data);
-        me.setState(
-          {
-            trackList: data
-          }
-        );
-      });
+      if (searchTerm !== '/filter?') {
+        $.get(searchTerm,
+        function(data) {
+          console.log(data);
+          me.setState(
+            {
+              trackList: data
+            }
+          );
+        });
+      }
     };
 
     return (

@@ -122,6 +122,7 @@ module.exports = {
               }
 
               console.log('return collection length', returnCollection.length);
+              callback(null, JSON.stringify(returnCollection));
             }
           });
         }

@@ -76,7 +76,7 @@ module.exports = {
   },
 
   filter: {
-    get: function(callback) {
+    get: function(queryString, callback) {
       console.log('got to model for filter');
       var userOptions = {
         url: 'https://api.soundcloud.com/oauth2/token',
@@ -100,7 +100,7 @@ module.exports = {
           var feedOptions = {
             url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
             method: 'GET',
-            qs: {oauth_token: token, limit: 1000}
+            qs: {oauth_token: token, limit: 10}
           };
 
           request(feedOptions, function(error, res, body) {
@@ -108,7 +108,19 @@ module.exports = {
               console.log('model got an error trying to get feed from SC', error);
               callback(error, null);
             } else {
-              console.log(JSON.parse(body).collection.length);
+              console.log('got collection back of length ', JSON.parse(body).collection.length);
+              var returnCollection = [];
+              var collection = JSON.parse(body).collection;
+              console.log('6th item in collection is ', collection[5].origin.duration);
+              for (var i = 0; i < collection.length; i++) {
+                var result = eval(queryString);
+                console.log('eval value for ' + collection[i].origin['genre'] + 'and ' + collection[i].origin.duration + ' is ' + result);
+                if (result) {
+                  returnCollection.push(collection[i]);
+                }
+              }
+
+              console.log('return collection length', returnCollection.length);
             }
           });
         }

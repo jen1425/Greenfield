@@ -90,13 +90,27 @@ module.exports = {
         }
       };
 
-      request(userOptions, function(error, res, body){
+      request(userOptions, function(error, res, body) {
         if (error) {
-          console.log('DB got an error from SC ', error);
+          console.log('model got an error from SC trying to get user token', error);
           callback(error, null);
         } else {
           var token = JSON.parse(body).access_token;
-          console.log(token);
+          
+          var feedOptions = {
+            url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
+            method: 'GET',
+            qs: {oauth_token: token, limit: 1000}
+          };
+
+          request(feedOptions, function(error, res, body) {
+            if(error) {
+              console.log('model got an error trying to get feed from SC', error);
+              callback(error, null);
+            } else {
+              console.log(JSON.parse(body).collection.length);
+            }
+          });
         }
       });
 

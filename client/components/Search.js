@@ -22,7 +22,7 @@ class Search extends React.Component {
   checkBoxhandler(e) {
     console.log('ClickHandler captured ', e.target.value);
     this.setState({
-      searchTerm: this.state.searchTerm + ', ' + e.target.value
+      searchTerm: this.state.searchTerm + ',' + e.target.value
     });
     //console.log('ClickHandler changes state to reflect ', this.state.searchTerm);
   }

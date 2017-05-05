@@ -15,10 +15,11 @@ class App extends React.Component {
   render () {
 
     var searchTracks = function(searchTerm) {
-      searchTerm = searchTerm.slice(2);
-      console.log('searchTerm received by App component ', searchTerm);
+      console.log('searchTerm ---> ', searchTerm);
+      searchTerm = searchTerm.slice(1);
+      console.log('searchTerm received by App component -->', searchTerm);
       var me = this;
-      $.get('/tracks?genres=' + searchTerm, 
+      $.get('/filter?genres=' + searchTerm,
       function(data) {
         console.log(data);
         me.setState(

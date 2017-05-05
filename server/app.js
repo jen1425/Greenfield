@@ -7,6 +7,7 @@ var partials = require('express-partials');
 var router = require('./routers/routers');
 var path = require('path');
 
+
 var app = express();
 app.set('port', process.env.PORT || 9000);
 
@@ -20,12 +21,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(router);
 
-app.get('*', function(request, response){
+app.get('*', function(request, response) {
   response.sendFile(path.join(__dirname, '../public/index.html'));
 });
 if (!module.parent) {
   app.listen(app.get('port'));
-  console.log('Server listening on port '+app.get('port'));
+  console.log('Server listening on port ' + app.get('port'));
 }
 
 module.exports.app = app;

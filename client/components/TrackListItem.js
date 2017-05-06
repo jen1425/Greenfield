@@ -10,29 +10,32 @@ class TrackListItem extends React.Component {
   }
 
   componentDidMount() {
-    this.getIframe()
+    this.getIframe();
+  }
+
+  componentWillUpdate() {
+    this.getIframe();
   }
 
   getIframe() {
     axios.get('https://soundcloud.com/oembed',
       {
         params: {
-          url: this.props.track.permalink_url,
+          url: this.props.track.origin.permalink_url,
           format: 'json',
           maxheight: '166',
           maxwidth: '600'
         }
-    }).then( response => {
-     this.setState({iframe: response.data});
+      }).then( response => {
+        this.setState({iframe: response.data});
 
-    }).catch( error => {console.log(error)})
+      }).catch( error => { console.log(error); });
   }
 
-  render () {
-
+  render () {   
     return (
       <div dangerouslySetInnerHTML={{__html: this.state.iframe.html}}></div>
-    )
+    );
   }
 }
 

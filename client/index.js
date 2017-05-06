@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './components/app.js';
 
 
-$.get('/tracks', function(data) {
+$.get('/filter', function(data) {
+  console.log(JSON.stringify(data));
   ReactDOM.render (
-      <App trackList={data}/>, document.getElementById('app')
+      <App trackList={JSON.parse(data)}/>, document.getElementById('app')
   );
 });

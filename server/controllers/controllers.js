@@ -2,29 +2,12 @@ var model = require('../models/models');
 var url = require('url');
 
 module.exports = {
-  tracks: {
-    get: function(req, res) {
-      var queryParams = url.parse(req.url, true).query;
-      console.log('got to the controller for tracks with query params ', queryParams.genres);
-      model.tracks.get(queryParams.genres, function(err, tracks) {
-        if (err) {
-          res.status(404)
-          .append('Access-Control-Allow-Origin', '*')
-          .send('Failed with err ' + err);
-        } else {
-          //console.log('tracks that the controller will send back '+JSON.stringify(tracks));
-          //console.log(tracks);
-          //console.log('Data the controller will send back ', tracks);
-          res.status(200)
-          .append('Access-Control-Allow-Origin', '*')
-          .send(tracks);
-        }
-      });
-    }
-  },
-
   filter: {
     get: function(req, res) {
+      //this method will extract the different filter options gotten from the 
+      //client and pass them on to the model as an if statement string expression, which
+      //the model can 'eval' 
+
       console.log('got to filter controller');
       var genreQS = '';
       var usernameQS = '';
@@ -55,24 +38,32 @@ module.exports = {
         genreQS += ')';
       }
 
-      finalQS = '(';
+      if (genreQS !== '' || usernameQS !== '' || durationQS !== '') {
+        finalQS += '(';
+      }
+      
 
       if (genreQS !== '') {
-        finalQS += genreQS + '&&';
+        finalQS += genreQS;
+        if(usernameQS !== '' || durationQS !== '') finalQS += '&&';
       }
 
       if (usernameQS !== '') {
-        finalQS += usernameQS + '&&';
+        finalQS += usernameQS;
+        if(durationQS !== '') finalQS += '&&';
       }
 
       if (durationQS !== '') {
         finalQS += durationQS;
       }
 
-      finalQS += ')';
-
+      if (genreQS !== '' || usernameQS !== '' || durationQS !== '') {
+        finalQS += ')';
+      }
+      //see the final query string that will be passed to the model 
       console.log('finalQS is --->', finalQS);
 
+      //call model with the querystring and wait for an async response of the filtered feed
       model.filter.get(finalQS, function(error, data) {
         if (error) {
           console.log('controller got error from DB', error);

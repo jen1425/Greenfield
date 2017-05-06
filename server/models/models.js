@@ -3,8 +3,6 @@ var key = process.env.SC_CLIENT_ID;
 var secret = process.env.SC_CLIENT_SECRET;
 var username = process.env.USERNAME;
 var password = process.env.PASSWORD;
-var axios = require('axios');
-var request = require('request');
 
 module.exports = {
 
@@ -39,7 +37,7 @@ module.exports = {
           callback(error, null);
         } else {
           var token = JSON.parse(body).access_token;
-          
+          console.log('token', token);
           var feedOptions = {
             url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
             method: 'GET',
@@ -57,9 +55,8 @@ module.exports = {
               //console.log(collection[0]);
               if (queryString === '') {
                 var filtered = [];
-                for(var j = 0; j < 20; j++) {
-                  if(!collection[j].origin) continue;
-                  else filtered.push(collection[j]);
+                for (var j = 0; j < 20; j++) {
+                  if (!collection[j].origin) { continue; }                  else { filtered.push(collection[j]); }
                 }
                 callback(null, JSON.stringify(filtered));
               } else {

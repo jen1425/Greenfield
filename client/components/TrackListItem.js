@@ -13,10 +13,7 @@ class TrackListItem extends React.Component {
     this.getIframe();
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      iframe: this.props.track.origin.permalink_url
-    });
+  componentWillUpdate() {
     this.getIframe();
   }
 

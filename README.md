@@ -1,13 +1,12 @@
-# Project Name
+# TrackFilter
 
-> Pithy project description
+> TrackFilter allows users to easily manage and organize their SoundCloud music feed. Create filters based on any criteria (for example: artist, genre, keyword) and TrackFilter applies them to the user's incoming SoundCloud feed.
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Aaron Xavier
+  - Rishi Raje
+  - Jennifer Hwa
 
 ## Table of Contents
 

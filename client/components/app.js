@@ -41,7 +41,6 @@ class App extends React.Component {
       if (searchTerm !== '/filter?') {
         $.get(searchTerm,
         function(data) {
-          console.log(data);
           me.setState(
             {
               trackList: JSON.parse(data)

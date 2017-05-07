@@ -37,7 +37,6 @@ module.exports = {
           callback(error, null);
         } else {
           var token = JSON.parse(body).access_token;
-          console.log('token', token);
           var feedOptions = {
             url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
             method: 'GET',
@@ -56,7 +55,7 @@ module.exports = {
               if (queryString === '') {
                 var filtered = [];
                 for (var j = 0; j < 20; j++) {
-                  if (!collection[j].origin) { continue; }                  else { filtered.push(collection[j]); }
+                  if (!collection[j].origin) { continue; } else { filtered.push(collection[j]); }
                 }
                 callback(null, JSON.stringify(filtered));
               } else {

@@ -7,57 +7,38 @@ var supertest = require('supertest');
 var request = supertest.agent(app);
 
 describe('GET /filter', function () {
-  var response = '';
+  var response = {};
 
   before(function(done) {
     // runs before all tests in this block
     request
-      .get('/filter')
-      .end(function(err, res) {
-        response = res;
-        done();
-      });
+    .get('/filter')
+    .end(function(err, res) {
+      response = res;
+      done();
+    });
   });
 
   it('should return 200 status code', function() {
     expect(response.statusCode).to.equal(200);
   });
 
-
- it('should return 200 status code', function (done) {
-   request
-       .get('/filter')
-       .expect(200, done);
- });
-
- it('should return an object', function(done) {
-   request
-   .get('/filter')
-   .expect(200, function(error, response) {
+  it('should return an object', function() {
      expect(response).to.be.an('object');
-     done();
-   });
- });
+  });
 
- it('should return a parseable body', function(done) {
-   request
-   .get('/filter')
-   .expect(200, function(error, response) {
+  it('should return a parseable body', function() {
      expect(JSON.parse.bind(this, response.text)).to.not.throw();
-     done();
-   });
- });
+  });
 
- it('main body should be an array', function(done) {
-   request
-   .get('/filter')
-   .expect(200, function(error, response) {
+  it('main body should be an array', function() {
      expect(JSON.parse(response.text)).to.be.an('array');
-     done();
-   });
- });
+  });
 
- it('should apply filters correctly', function(done) {
+});
+
+describe('GET /filter?', function() {
+  it('should apply filters correctly', function(done) {
     this.timeout(15000);
    request
    .get('/filter?username=monaberry&duration=120000')
@@ -67,6 +48,7 @@ describe('GET /filter', function () {
      done();
      setTimeout(done, 150000);
    });
- });
+  });
 });
+
 

@@ -1,12 +1,29 @@
 var expect = require('chai').expect;
-var app = require('../server/app.js');
+var app = require('../server/app.js').app;
 var fs = require('fs');
 var path = require('path');
 var supertest = require('supertest');
 
-var request = supertest.agent(app.app);
+var request = supertest.agent(app);
 
 describe('GET /filter', function () {
+  var response = '';
+
+  before(function(done) {
+    // runs before all tests in this block
+    request
+      .get('/filter')
+      .end(function(err, res) {
+        response = res;
+        done();
+      });
+  });
+
+  it('should return 200 status code', function() {
+    expect(response.statusCode).to.equal(200);
+  });
+
+
  it('should return 200 status code', function (done) {
    request
        .get('/filter')

@@ -52,6 +52,7 @@
     "webpack": "^2.4.1"
   },
   "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
   },
   "babel": {
@@ -63,14 +64,19 @@
     "modulePaths": [
       "/shared/vendor/modules"
     ],
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
-
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "^react(.*)$": "<rootDir>/vendor/react-master$1",
       "^config$": "<rootDir>/configs/app-config.js",
-
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",    
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
     }
   }

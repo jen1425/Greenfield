@@ -31,7 +31,7 @@ module.exports = {
       if (qs.genre) {
         genreQS += '(';
         var genreArray = qs.genre.split(',');
-        genreArray.forEach(function(genre){
+        genreArray.forEach(function(genre) {
           genreQS += 'collection[i].origin["genre"] === "' + genre + '"||';
         });
         genreQS = genreQS.substring(0, genreQS.length - 2);
@@ -45,12 +45,12 @@ module.exports = {
 
       if (genreQS !== '') {
         finalQS += genreQS;
-        if(usernameQS !== '' || durationQS !== '') finalQS += '&&';
+        if (usernameQS !== '' || durationQS !== '') {finalQS += '&&';}
       }
 
       if (usernameQS !== '') {
         finalQS += usernameQS;
-        if(durationQS !== '') finalQS += '&&';
+        if (durationQS !== '') {finalQS += '&&';}
       }
 
       if (durationQS !== '') {

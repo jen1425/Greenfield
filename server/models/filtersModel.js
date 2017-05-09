@@ -47,3 +47,27 @@ exports.postFilter = function(data, callback) {
     callback(null, 'Success!');
   });
 };
+
+exports.getAllUserFilters = function(callback) {
+  let userId = 2;
+
+  db.getAllUserFilters(userId, function(error, results) {
+    if (error) {
+      console.log('error in filtersModel for getAllUserFilters', error);
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+exports.getFilterAttributes = function(filterId, callback) {
+  db.getFilterAttributes(filterId, function(error, results) {
+    if (error) {
+      console.log('error in filtersModel for getFilterAttributes', error);
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};

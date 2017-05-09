@@ -3,13 +3,23 @@ import TrackList from './TrackList.js';
 import Controls from './Controls.js';
 import Search from './Search.js';
 import Nav from './Nav.js';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      trackList: this.props.trackList
+      trackList: []
     };
+  }
+
+  componentDidMount() {
+    let that = this;
+    axios.get('/filter').then(function(response) {
+      that.setState({trackList: response.data});
+    }).catch(function(error) {
+      console.log('error in app.js get filters');
+    });
   }
 
   render () {

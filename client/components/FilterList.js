@@ -8,15 +8,33 @@ class FilterList extends React.Component {
     this.state = {
       filters: []
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentWillMount() {
-  //   axios.get('/tempfilters', {
-  //     params: {
-  //       userId: '2'
-  //     }
-  //   });
-  // }
+  componentWillMount() {
+    let that = this;
+    axios.get('/filters').then(function(results) {
+      that.setState({filters: results.data});
+    }).catch(function(error) {
+      console.log('error in FilterList', error);
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    console.log(event.target.id);
+    axios.get('/feed', {
+      params: {
+        id: event.target.id
+      }
+    })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  }
 
   render () {
     if (this.state.filters.length === 0) {
@@ -27,9 +45,9 @@ class FilterList extends React.Component {
       );
     } else {
       return (
-        <DropdownButton title='Select a Filter'>
-          {this.state.filters.map((name, index) => 
-          <MenuItem eventKey={index} key={index}>{this.state.filters[index]}</MenuItem> )}
+        <DropdownButton title='Select a Filter' id='select fiter dropdown'>
+          {this.state.filters.map((filter, index) => 
+          <MenuItem id={filter.id} key={index}onClick={(e) => this.handleClick(e)}>{filter.name}</MenuItem> )}
         </DropdownButton>
       );
     }

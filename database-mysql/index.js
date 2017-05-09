@@ -5,8 +5,14 @@ const mysqlConfig = require('./config');
 let connection = mysql.createPool(mysqlConfig);
 
 
-exports.getUserFilters = function(userId, cb) {
-
+exports.getAllUserFilters = function(userId, callback) {
+  connection.query('SELECT id, name FROM filters WHERE userId = ?', [userId], function(error, results, fields) {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
 };
 
 exports.postFilter = function(userId, filterName, callback) {
@@ -33,4 +39,13 @@ exports.postFilterAttributes = function(filterId, type, value, callback) {
   });
 };
 
-exports.connection = connection;
+exports.getFilterAttributes = function(filterId, callback) {
+  connection.query('SELECT type, value FROM filterattributes WHERE filterId = ?', [filterId], function(error, results, fields) {
+    if (error) {
+      console.log('mysql index getFilterAttributes query error', error);
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};

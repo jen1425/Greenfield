@@ -26,3 +26,24 @@ exports.postFilter = function(req, res) {
   });
 };
 
+exports.getAllUserFilters = function(req, res) {
+  model.getAllUserFilters(function(error, data) {
+    if (error) {
+      res.status(404).send(error);
+    } else {
+      res.send(data);
+    }
+  });
+};
+
+exports.getFilterAttributes = function(req, res) {
+  model.getFilterAttributes(req.query.id, function(error, data) {
+    if (error) {
+      res.status(404).send(error);
+    } else {
+      console.log('data in filtersController for getAllFilterAttributes', data);
+      res.send(data);
+    }
+  });
+};
+

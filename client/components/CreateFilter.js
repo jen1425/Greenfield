@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, Button, FieldGroup } from 'react-bootstrap';
 
 
 class CreateFilter extends React.Component {
@@ -8,9 +8,12 @@ class CreateFilter extends React.Component {
     super(props);
     this.state = {
       followings: [],
-      newFilterFollowings: []
+      newFilterFollowings: [],
+      newFilterName: ''
     };
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount () {
@@ -29,9 +32,36 @@ class CreateFilter extends React.Component {
     this.setState({newFilterFollowings: this.state.newFilterFollowings.concat([newFilterAttribute])});
   }
 
+  handleChange(event) {
+    this.setState({newFilterName: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    axios.post('/filters', {
+      newFilterFollowings: this.state.newFilterFollowings,
+      newFilterName: this.state.newFilterName
+    })
+  .then(function (response) {
+    console.log('CreateFilter handleSubmit response', response);
+  })
+  .catch(function (error) {
+    console.log('CreateFilter handleSubmit error', error);
+  });
+  }
+
   render () {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
+        <FormGroup controlId="formBasicText">
+          <ControlLabel>Name Your Filter</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.newFilterName}
+            placeholder="Filter Name"
+            onChange={this.handleChange}
+          />
+        </FormGroup>
         <FormGroup controlId="formControlsSelectMultiple">
           <ControlLabel>Filter by People You Follow (multi-select)</ControlLabel>
           <FormControl componentClass="select" multiple>

@@ -9,7 +9,7 @@ var request = supertest.agent(app);
 describe('GET /filter', function () {
   var response = {};
 
-  before(function(done) {
+  beforeAll(function(done) {
     // runs before all tests in this block
     request
     .get('/filter')
@@ -39,14 +39,14 @@ describe('GET /filter', function () {
 
 describe('GET /filter?', function() {
   it('should apply filters correctly', function(done) {
-    this.timeout(15000);
+    //this.timeout(15000);
    request
    .get('/filter?username=monaberry&duration=120000')
    .expect(200, function(error, response) {
      expect(JSON.parse(response.text)[0].origin.user.username).to.equal('monaberry');
      expect(JSON.parse(response.text)[0].origin.duration).to.be.above(120000);
      done();
-     setTimeout(done, 150000);
+     //setTimeout(done, 150000);
    });
   });
 });

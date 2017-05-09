@@ -9,7 +9,9 @@ var request = supertest.agent(app);
 describe('GET /filter', function () {
   var response = {};
 
+
   beforeAll(function(done) {
+
     // runs before all tests in this block
     request
     .get('/filter')
@@ -30,7 +32,7 @@ describe('GET /filter', function () {
   it('should return a parseable body', function() {
     expect(JSON.parse.bind(this, response.text)).to.not.throw();
   });
-
+  
   it('main body should be an array', function() {
     expect(JSON.parse(response.text)).to.be.an('array');
   });

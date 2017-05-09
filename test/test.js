@@ -24,29 +24,28 @@ describe('GET /filter', function () {
   });
 
   it('should return an object', function() {
-     expect(response).to.be.an('object');
+    expect(response).to.be.an('object');
   });
 
   it('should return a parseable body', function() {
-     expect(JSON.parse.bind(this, response.text)).to.not.throw();
+    expect(JSON.parse.bind(this, response.text)).to.not.throw();
   });
 
   it('main body should be an array', function() {
-     expect(JSON.parse(response.text)).to.be.an('array');
+    expect(JSON.parse(response.text)).to.be.an('array');
   });
 
 });
 
 describe('GET /filter?', function() {
   it('should apply filters correctly', function(done) {
-    //this.timeout(15000);
-   request
+    request
    .get('/filter?username=monaberry&duration=120000')
+   .timeout(15000)
    .expect(200, function(error, response) {
      expect(JSON.parse(response.text)[0].origin.user.username).to.equal('monaberry');
      expect(JSON.parse(response.text)[0].origin.duration).to.be.above(120000);
      done();
-     //setTimeout(done, 150000);
    });
   });
 });

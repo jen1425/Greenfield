@@ -14,7 +14,7 @@ class Controls extends React.Component {
       <div className='controls'>
         <Search submitHandler={this.props.submitHandler} />
         <h3>Your Filters</h3>
-        <FilterList />
+        <FilterList clickHandler={this.props.clickHandler}/>
         <h3>Create a New Filter</h3>
         <CreateFilter />
       </div>

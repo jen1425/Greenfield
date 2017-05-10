@@ -23,18 +23,19 @@ class FilterList extends React.Component {
   handleClick(event) {
     event.preventDefault();
     console.log(event.target.id);
-    axios.get('/feed', {
-      params: {
-        id: event.target.id
-      }
-    })
-  .then(function (response) {
-    console.log('YAY filtered feed');
-    console.log(JSON.stringify(response));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    this.props.clickHandler(event.target.id);
+  //   axios.get('/feed', {
+  //     params: {
+  //       id: event.target.id
+  //     }
+  //   })
+  // .then(function (response) {
+  //   console.log('YAY filtered feed');
+  //   console.log(response.data[0].origin.user.username);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
   }
 
   render () {

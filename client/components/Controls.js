@@ -20,6 +20,10 @@ class Controls extends React.Component {
       console.log('error in Controls geting filter list', error);
     });
   }
+
+  updateFilters(newFilter) {
+    this.setState({filters: this.state.filters.concat([newFilter])});
+  }
   
   render() {
     return (
@@ -28,7 +32,7 @@ class Controls extends React.Component {
         <h3>Your Filters</h3>
         <FilterList clickHandler={this.props.clickHandler}filters={this.state.filters}/>
         <h3>Create a New Filter</h3>
-        <CreateFilter />
+        <CreateFilter updateFilters={this.updateFilters.bind(this)}/>
       </div>
     );
   }

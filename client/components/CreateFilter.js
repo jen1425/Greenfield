@@ -46,8 +46,10 @@ class CreateFilter extends React.Component {
   .then(function (response) {
     console.log('CreateFilter handleSubmit response', response);
     console.log('new filter ID', response.data);
-    console.log('config data', response.config.data.newFilterName);
-    let newFilter = {id: response.data, name: response.config.data.newFilterName};
+    let newFilter = {id: response.data, name: that.state.newFilterName};
+    that.props.updateFilters(newFilter);
+    alert('New Filter Created!');
+    that.setState({newFilterFollowings: [], newFilterName: ''});
   })
   .catch(function (error) {
     console.log('CreateFilter handleSubmit error', error);

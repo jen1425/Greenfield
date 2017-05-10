@@ -27,18 +27,3 @@ describe('<Search />', () => {
   });
 
 });
-
-
-/*
-render correct user input components
-
-user interaction :
-  clicking check box calls appropriate function
-  typing in text box calls appropriate function
-  submit search calls appropriate function
-
-props received : this.props.Submithandler() was received and called
-
-
-
-*/

@@ -2,6 +2,8 @@ const axios = require('axios');
 const db = require('../../database-mysql/index');
 const request = require('request');
 
+//adding test comment to test circle CI 
+
 exports.getFollowings = function(callback) {
   axios.get('https://api.soundcloud.com/users/7742327/followings', {
     params: {

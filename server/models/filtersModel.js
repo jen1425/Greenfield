@@ -85,7 +85,7 @@ exports.getFilterAttributes = function(filterId, callback) {
       var feedOptions = {
         url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
         method: 'GET',
-        qs: {oauth_token: '1-277366-7742327-c7e7cb45fe4ff41', limit: 500, order: '-created_at'}
+        qs: {oauth_token: TOKEN, limit: 500, order: '-created_at'}
       };
 
       request(feedOptions, function(error, response, body) {

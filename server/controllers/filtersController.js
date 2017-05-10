@@ -21,7 +21,9 @@ exports.postFilter = function(req, res) {
       console.log('filtersController postFilter error', error);
     } else {
       console.log('filtersController postFilter data', data);
-      res.end(); 
+
+      res.send(JSON.stringify(data));
+      res.end();
     }
   });
 };

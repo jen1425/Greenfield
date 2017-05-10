@@ -51,7 +51,7 @@ module.exports = {
               console.log('got collection back of length ', JSON.parse(body).collection.length);
               var returnCollection = [];
               var collection = JSON.parse(body).collection;
-              //console.log(collection[0]);
+              console.log(collection[0]);
               if (queryString === '') {
                 var filtered = [];
                 for (var j = 0; j < 20; j++) {

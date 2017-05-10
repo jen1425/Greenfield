@@ -1,5 +1,6 @@
 const axios = require('axios');
 const db = require('../../database-mysql/index');
+const request = require('request');
 
 exports.getFollowings = function(callback) {
   axios.get('https://api.soundcloud.com/users/7742327/followings', {
@@ -67,7 +68,47 @@ exports.getFilterAttributes = function(filterId, callback) {
       console.log('error in filtersModel for getFilterAttributes', error);
       callback(error, null);
     } else {
-      callback(null, results);
+      var filterArray = JSON.parse(JSON.stringify(results));
+      var followingString = '(';
+      for (var i = 0; i < filterArray.length; i++) {
+        //check type of filterArray[i] 
+        if (filterArray[i].type === 'following') {
+          var value = parseInt(filterArray[i].value);
+          followingString += 'collection[i].origin.user["id"] === ' + value + ' ||';
+        }
+      }
+
+      followingString = followingString.substring(0, followingString.length - 2);
+      followingString += ')';
+      console.log('followingString --->', followingString);
+
+      var feedOptions = {
+        url: 'https://api.soundcloud.com/me/activities/tracks/affiliated',
+        method: 'GET',
+        qs: {oauth_token: '1-277366-7742327-c7e7cb45fe4ff41', limit: 500, order: '-created_at'}
+      };
+
+      request(feedOptions, function(error, response, body) {
+        if (error) { console.log('error getting feed ', error); }        
+        else {
+          // console.log(JSON.parse(body).collection);
+          var collection = JSON.parse(body).collection;
+          var returnCollection = [];
+
+          for (var i = 0; i < collection.length; i++) {
+            if (!collection[i].origin) { continue; }
+            var result = eval(followingString);
+            if (result) {
+              returnCollection.push(collection[i]);
+            }
+          }
+
+          console.log('ret coll length ', returnCollection.length);
+          callback(null, JSON.stringify(returnCollection));
+        }
+      });
+
+      // callback(null, results);
     }
   });
 };

@@ -29,7 +29,8 @@ class FilterList extends React.Component {
       }
     })
   .then(function (response) {
-    console.log(response);
+    console.log('YAY filtered feed');
+    console.log(JSON.stringify(response));
   })
   .catch(function (error) {
     console.log(error);

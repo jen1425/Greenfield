@@ -16,6 +16,7 @@ class App extends React.Component {
   componentDidMount() {
     let that = this;
     axios.get('/filter').then(function(response) {
+      console.log('initial data from server -------------->');
       that.setState({trackList: response.data});
     }).catch(function(error) {
       console.log('error in app.js get filters');
@@ -23,6 +24,29 @@ class App extends React.Component {
   }
 
   render () {
+
+    var clickHandler = function(filterId) {
+      var me = this;
+      console.log('click handler for app');
+      console.log('filter ID received ------>', filterId);
+      axios.get('/feed', {
+        params: {
+          id: filterId
+        }
+      })
+  .then(function (response) {
+    console.log('YAY filtered feed');
+    console.log(response.data[0].origin.user.username);
+    me.setState({
+      trackList: response.data
+    }, function(){
+      console.log('state was updated');
+    });
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    };
 
     var searchTracks = function(duration, genre, username) {
       var searchTerm = '/filter?';
@@ -68,7 +92,7 @@ class App extends React.Component {
             <TrackList trackList={this.state.trackList}/>
           </div>
           <div className="col-md-4">
-            <Controls submitHandler={searchTracks.bind(this)} />
+            <Controls submitHandler={searchTracks.bind(this)} clickHandler={clickHandler.bind(this)}/>
           </div>
         </div>
        </div>

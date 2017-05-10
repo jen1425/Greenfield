@@ -47,7 +47,7 @@ exports.postFilter = function(data, callback) {
         }); 
       }
     }
-    callback(null, 'Success!');
+    callback(null, data);
   });
 };
 
@@ -91,8 +91,7 @@ exports.getFilterAttributes = function(filterId, callback) {
       };
 
       request(feedOptions, function(error, response, body) {
-        if (error) { console.log('error getting feed ', error); }        
-        else {
+        if (error) { console.log('error getting feed ', error); }                else {
           // console.log(JSON.parse(body).collection);
           var collection = JSON.parse(body).collection;
           var returnCollection = [];

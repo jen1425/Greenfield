@@ -37,6 +37,7 @@ class CreateFilter extends React.Component {
   }
 
   handleSubmit(event) {
+    let that = this;
     event.preventDefault();
     axios.post('/filters', {
       newFilterFollowings: this.state.newFilterFollowings,
@@ -44,6 +45,11 @@ class CreateFilter extends React.Component {
     })
   .then(function (response) {
     console.log('CreateFilter handleSubmit response', response);
+    console.log('new filter ID', response.data);
+    let newFilter = {id: response.data, name: that.state.newFilterName};
+    that.props.updateFilters(newFilter);
+    alert('New Filter Created!');
+    that.setState({newFilterFollowings: [], newFilterName: ''});
   })
   .catch(function (error) {
     console.log('CreateFilter handleSubmit error', error);

@@ -1,13 +1,17 @@
-# Project Name
+# Track Filter
 
-> Pithy project description
+Want to get your SoundCloud feed, but want to filter out some of the noise? The Track Filter web app allows you to specify which posts from your SoundCloud feed you want to see. You can search for different artists in your feed, or tracks by duration and genre. You can also create your custom filters based on the people you are following, and save those filters. Loading a filter will automatically show you posts based on the filter you have selected.
+
+While we have implemented this solution for SoundCloud, we can see this being extensible to other social platforms like Facebook and Twitter as well.
+
+Your feed, your way, no noise!
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Aaron Xavier
+  - Jennifer Hwa
+  - Rishi Raje
+
 
 ## Table of Contents
 
@@ -21,15 +25,11 @@
 
 ## Usage
 
-> Some usage instructions
+> Some usage instruction
 
 ## Requirements
 
-- Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node 7.8.x
 
 ## Development
 

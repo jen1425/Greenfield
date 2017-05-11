@@ -25,13 +25,29 @@ Your feed, your way, no noise!
 
 ## Usage
 
-> Some usage instruction
+### Try it out 
+
+### Run it locally 
+
+### User accounts
 
 ## Requirements
 
 - Node 7.8.x
 
 ## Development
+
+### SoundCloud API
+
+### Database
+
+### Testing 
+
+#### Client tests 
+
+#### Server tests
+
+#### Continuous integration 
 
 ### Installing Dependencies
 
@@ -42,6 +58,9 @@ npm install -g bower
 npm install
 bower install
 ```
+### Environment variables and keys 
+
+### Deployment 
 
 ### Roadmap
 

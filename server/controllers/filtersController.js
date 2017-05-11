@@ -43,7 +43,6 @@ exports.getFilterAttributes = function(req, res) {
     if (error) {
       res.status(404).send(error);
     } else {
-      console.log('data in filtersController for getAllFilterAttributes', data);
       res.send(data);
     }
   });

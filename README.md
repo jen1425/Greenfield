@@ -90,6 +90,8 @@ Circle CI provides continuous integration support. A new PR will automatically t
 
 The result of the tests will be displayed on Github before merging the PR. This can give the reviewer more confidence in merging the changes.
 
+Currently the option to deploy the changed instantly to Heroku through Circle CI have been disabled. See the deployment section for more information on deploying. 
+
 ### Installing Dependencies
 
 From within the root directory:
@@ -99,7 +101,23 @@ npm install
 ```
 ### Environment variables and keys 
 
+If you plan on adding to this project you will need the following information - 
+
+1) Credentials to connect to the clearDB on Heroku.
+2) The API key and secret from SoundCloud
+
+Please reach out to one of the team members for details on these.
+
 ### Deployment 
+
+The app is currently deployed on Heroku and uses a deployment pipeline. 
+
+- A review app will automatically be created when a PR is created
+- A staging version of the app will be created when the PR is merged
+- Promotion from staging to production is a manual through Heroku. 
+
+All of the intermediate apps can be accessed through Heroku, while the production app will live on http://track-filter.herokuapp.com/
+
 
 ### Roadmap
 

@@ -12,5 +12,5 @@ describe('<TrackList />', () => {
     const wrapper = shallow(<TrackList trackList={[1, 2]} />);
     expect(wrapper.find('TrackListItem').length).toBe(2);
   });
-
 });
+

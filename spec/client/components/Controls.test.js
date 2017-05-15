@@ -17,5 +17,5 @@ describe('<Controls />', () => {
     const wrapper = shallow(<Controls />);
     expect(wrapper.find('CreateFilter').length).toBe(1);
   });
-
 });
+

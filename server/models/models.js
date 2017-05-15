@@ -51,7 +51,6 @@ module.exports = {
               console.log('got collection back of length ', JSON.parse(body).collection.length);
               var returnCollection = [];
               var collection = JSON.parse(body).collection;
-              console.log(collection[0]);
               if (queryString === '') {
                 var filtered = [];
                 for (var j = 0; j < 20; j++) {
@@ -59,7 +58,6 @@ module.exports = {
                 }
                 callback(null, JSON.stringify(filtered));
               } else {
-                console.log(queryString);
                 for (var i = 0; i < collection.length; i++) {
                   if (!collection[i].origin) { continue; }
                   var result = eval(queryString);

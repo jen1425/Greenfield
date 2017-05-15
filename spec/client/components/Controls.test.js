@@ -1,24 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
 import Controls from '../../../client/components/Controls';
 
 describe('<Controls />', () => {
-  it('should render one <Search /> component', () => {
+  it('should render one <Nav /> component', () => {
     const wrapper = shallow(<Controls />);
-    expect(wrapper.find('Search')).to.have.length(1);
+    expect(wrapper.find('Search').length).toBe(1);
   });
 
-  it('should render one <FilterList /> component', () => {
+  it('should render one <TrackList /> component', () => {
     const wrapper = shallow(<Controls />);
-    expect(wrapper.find('FilterList')).to.have.length(1);
+    expect(wrapper.find('FilterList').length).toBe(1);
   });
 
-  it('should render one <CreateFilter /> component', () => {
+  it('should render one <Controls /> component', () => {
     const wrapper = shallow(<Controls />);
-    expect(wrapper.find('CreateFilter')).to.have.length(1);
+    expect(wrapper.find('CreateFilter').length).toBe(1);
   });
-
 });
-
 

@@ -1,20 +1,16 @@
-import React from "react";
-import { shallow } from "enzyme";
-import { expect } from 'chai';
+import React from 'react';
+import { shallow } from 'enzyme';
 import TrackList from '../../../client/components/TrackList';
-import TrackListItem from '../../../client/components/TrackListItem';
-
 
 describe('<TrackList />', () => {
-  it('renders the list of TrackListItems', () => {
-    var list = [
-      {track1: 'track1'},
-      {track2: 'track2'},
-      {track3: 'track3'}
-    ];
-    const wrapper = shallow(<TrackList trackList={list} />);
-    expect(wrapper.find('TrackListItem')).to.have.length(3);
+  it('should render one <TrackListItem /> component', () => {
+    const wrapper = shallow(<TrackList trackList={[1]} />);
+    expect(wrapper.find('TrackListItem').length).toBe(1);
+  });
+
+  it('should render two <TrackListItem /> components', () => {
+    const wrapper = shallow(<TrackList trackList={[1, 2]} />);
+    expect(wrapper.find('TrackListItem').length).toBe(2);
   });
 });
-
 

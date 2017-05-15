@@ -11,31 +11,16 @@ class FilterList extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillMount() {
-    let that = this;
-    axios.get('/filters').then(function(results) {
-      that.setState({filters: results.data});
-    }).catch(function(error) {
-      console.log('error in FilterList', error);
-    });
+  componentWillReceiveProps(nextProps) {
+    if (this.state.filters !== nextProps.filters) {
+      this.setState({filters: nextProps.filters});
+    }
   }
 
   handleClick(event) {
     event.preventDefault();
     console.log(event.target.id);
     this.props.clickHandler(event.target.id);
-  //   axios.get('/feed', {
-  //     params: {
-  //       id: event.target.id
-  //     }
-  //   })
-  // .then(function (response) {
-  //   console.log('YAY filtered feed');
-  //   console.log(response.data[0].origin.user.username);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
   }
 
   render () {

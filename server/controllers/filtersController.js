@@ -21,7 +21,9 @@ exports.postFilter = function(req, res) {
       console.log('filtersController postFilter error', error);
     } else {
       console.log('filtersController postFilter data', data);
-      res.end(); 
+
+      res.send(JSON.stringify(data));
+      res.end();
     }
   });
 };
@@ -41,7 +43,6 @@ exports.getFilterAttributes = function(req, res) {
     if (error) {
       res.status(404).send(error);
     } else {
-      console.log('data in filtersController for getAllFilterAttributes', data);
       res.send(data);
     }
   });

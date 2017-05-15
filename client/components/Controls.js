@@ -24,15 +24,22 @@ class Controls extends React.Component {
   updateFilters(newFilter) {
     this.setState({filters: this.state.filters.concat([newFilter])});
   }
-  
+
   render() {
+
     return (
       <div className='controls'>
         <Search submitHandler={this.props.submitHandler} />
-        <h3>Your Filters</h3>
-        <FilterList clickHandler={this.props.clickHandler}filters={this.state.filters}/>
-        <h3>Create a New Filter</h3>
-        <CreateFilter updateFilters={this.updateFilters.bind(this)}/>
+        <div className='filter-outline'>
+          <div className="panel-heading">
+            <h3 className="panel-title">Your Filters</h3>
+          </div>
+          <div className="panel-body">
+            <FilterList clickHandler={this.props.clickHandler}filters={this.state.filters}/>
+            <div className="h3">Create a New Filter</div>
+            <CreateFilter updateFilters={this.updateFilters.bind(this)}/>
+          </div>
+        </div>
       </div>
     );
   }

@@ -7,12 +7,17 @@ class Nav extends React.Component {
   }
 
   render () {
+
+    var style = {
+      backgroundImage: "url(https://pbs.twimg.com/profile_images/378800000470474009/575a67d4481c28fb51c962e71f7d1be6_400x400.png)",
+      height: '140px',
+      color: 'white',
+    }
+
     return (
-      <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container navbar-header">
-          <p className="navbar-brand">TrackFilter</p>
+        <div className="page-header align" style={style}>
+          <h1 className="text-center">TrackFilter</h1>
         </div>
-      </nav>
     );
   }
 }

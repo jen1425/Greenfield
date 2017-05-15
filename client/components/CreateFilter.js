@@ -71,7 +71,7 @@ class CreateFilter extends React.Component {
         <FormGroup controlId="formControlsSelectMultiple">
           <ControlLabel>Filter by People You Follow (multi-select)</ControlLabel>
           <FormControl componentClass="select" multiple>
-            {this.state.followings.map((user) => 
+            {this.state.followings.map((user) =>
               <option key={user.id} id={user.id} value={user.username} onClick={(e) => this.handleSelect(e)}>{user.username}</option>)}
            </FormControl>
         </FormGroup>
@@ -79,7 +79,6 @@ class CreateFilter extends React.Component {
           Create Filter
         </Button>
       </form>
-      //implement a way to view what is selected. 
     );
   }
 }

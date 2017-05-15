@@ -2,7 +2,7 @@ const axios = require('axios');
 const db = require('../../database-mysql/index');
 const request = require('request');
 
-//adding test comment to test circle CI 
+//adding test comment to test circle CI
 
 exports.getFollowings = function(callback) {
   axios.get('https://api.soundcloud.com/users/7742327/followings', {
@@ -44,7 +44,7 @@ exports.postFilter = function(data, callback) {
               console.log('result in filtersModel postFilterAttributes', result);
             }
           });
-        }); 
+        });
       }
     }
     callback(null, data);
@@ -73,7 +73,7 @@ exports.getFilterAttributes = function(filterId, callback) {
       var filterArray = JSON.parse(JSON.stringify(results));
       var followingString = '(';
       for (var i = 0; i < filterArray.length; i++) {
-        //check type of filterArray[i] 
+        //check type of filterArray[i]
         if (filterArray[i].type === 'following') {
           var value = parseInt(filterArray[i].value);
           followingString += 'collection[i].origin.user["id"] === ' + value + ' ||';
@@ -101,6 +101,7 @@ exports.getFilterAttributes = function(filterId, callback) {
             var result = eval(followingString);
             if (result) {
               returnCollection.push(collection[i]);
+              console.log('Artist ---->', collection[i].origin.user.username);
             }
           }
 

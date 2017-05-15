@@ -6,6 +6,7 @@ class TrackListItem extends React.Component {
     super(props);
     this.state = {
       iframe: ''
+      // author: ''
     };
   }
 
@@ -27,14 +28,19 @@ class TrackListItem extends React.Component {
           maxwidth: '600'
         }
       }).then( response => {
+        // console.log('RESPONSE ', response.data);
         this.setState({iframe: response.data});
+        // this.setState({author: response.data.author_name});
 
       }).catch( error => { console.log(error); });
   }
 
-  render () {   
+  render () {
     return (
-      <div dangerouslySetInnerHTML={{__html: this.state.iframe.html}}></div>
+      <div>
+        {/* <div>Created By: {this.state.author}</div>*/}
+        <div dangerouslySetInnerHTML={{__html: this.state.iframe.html}}></div>
+      </div>
     );
   }
 }

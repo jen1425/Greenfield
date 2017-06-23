@@ -2,16 +2,15 @@ import React from 'react';
 import TrackListItem from './TrackListItem.js';
 
 class TrackList extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {};
-  };
+  }
 
   render () {
     return (
-      <div className='track-list'>
-        Track List component.
-        {this.props.trackList.map(item => (<TrackListItem track={item} />))}
+      <div className='track-list' >
+        {this.props.trackList.map((item, index) => (<TrackListItem key={index} track={item} />))}
       </div>
     );
   }
